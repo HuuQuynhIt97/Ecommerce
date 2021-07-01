@@ -18,6 +18,7 @@ namespace ecommerce_api._Services.Services
         private readonly IUserRepository _userRepository;
         private readonly IMapper _mapper;
         private readonly MapperConfiguration _configMapper;
+        private readonly ILogger<UserService> _logger;
         public UserService(IUserRepository userRepository,
             IMapper mapper,
             MapperConfiguration configMapper)
@@ -26,12 +27,64 @@ namespace ecommerce_api._Services.Services
             _mapper = mapper;
             _userRepository = userRepository;
         }
-
-        public Task<bool> Add(UserDto model)
+        public bool IsValidUserCredentials(string userName, string password)
         {
-            throw new NotImplementedException();
-        }
+            _logger.LogInformation($"Validating user [{userName}]");
+            if (string.IsNullOrWhiteSpace(userName))
+            {
+                return false;
+            }
 
+            if (string.IsNullOrWhiteSpace(password))
+            {
+                return false;
+            }
+
+            var user = _context.Users.Where(x => x.IsShow == true).FirstOrDefault(x => x.EmployeeID.ToLower() == userName.ToLower());
+            if (!VerifyPasswordHash(password, user.PasswordHash, user.PasswordSalt))
+                return false;
+
+            return true;
+        }
+        public async Task<bool> Add(UserDto model)
+        {
+            var item = await _userRepository.FindAll().FirstOrDefaultAsync(x => x.Username.ToLower().Equals(model.Username.ToLower()) || x.Email.Equals(model.Email));
+            if (item == null)
+            {
+                byte[] passwordHash, passwordSalt;
+                CreatePasswordHash(model.Password, out passwordHash, out passwordSalt);
+                var user = new User
+                {
+                    Username = model.Username,
+                    Email = model.Email,
+                    
+                };
+                user.PasswordHash = passwordHash;
+                user.PasswordSalt = passwordSalt;
+                _userRepository.Add(user);
+                try
+                {
+                    await _userRepository.SaveAll();
+                   
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
+        }
+        
+        private void CreatePasswordHash(string password, out byte[] passwordHash, out byte[] passwordSalt)
+        {
+            using var hmac = new System.Security.Cryptography.HMACSHA512();
+            passwordSalt = hmac.Key;
+            passwordHash = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(password));
+        }
         public Task<bool> Delete(object id)
         {
             throw new NotImplementedException();

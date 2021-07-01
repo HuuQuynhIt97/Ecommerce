@@ -15,17 +15,34 @@
   <meta name="description" content="Digital Mixing Room System">
   <meta name="author" content="Łukasz Holeczek">
   <meta name="keyword" content="Bootstrap,Admin,Template,Free,Angular,Dashboard,Typescript">
-	<link rel="shortcut icon" href="assets/favicon.ico">
-	<title>Digital Mixing Room System</title>
-  <link rel="stylesheet" href="./assets/css/w3.css">
+	<!-- <link rel="shortcut icon" href="assets/favicon.ico"> -->
+	<title>Shopoo</title>
+  <!-- <link rel="stylesheet" href="./assets/css/w3.css">
   <link rel="stylesheet" href="./assets/css/pretty-checkbox.min.css">
-  <!-- <link
-    href="https://cdn.jsdelivr.net/npm/pretty-checkbox@3.0/dist/pretty-checkbox.min.css"
-    rel="stylesheet"
-  /> -->
-  <link rel="stylesheet" href="./assets/lib/bootstrap-datetimepicker-0.0.11/css/bootstrap-datetimepicker.min.css">
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA-118965717-3"></script> -->
+
+  <link rel="stylesheet" href="./assets/lib/bootstrap-datetimepicker-0.0.11/css/bootstrap-datetimepicker.min.css"> -->
+
+  <!-- Favicon -->
+  <link rel="icon" href="https://demo.activeitzone.com/ecommerce/public/uploads/all/4xnLnzEeu3dFKDGSBMlvLXPLGXFdHEkvqBSZREmO.png">
+
+  <!-- Google Fonts -->
+  <link rel="stylesheet" href="./assets/shop/css/vendors.css">
+  <link rel="stylesheet" href="./assets/shop/css/aiz-core.css">
+  <link rel="stylesheet" href="./assets/shop/css/custom-style.css">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i&display=swap" rel="stylesheet">
+
+  <style>
+    body{
+      font-family: 'Open Sans', sans-serif;
+      font-weight: 400;
+    }
+    :root{
+      --primary: #e62e04;
+      --hov-primary: #e62e04;
+      --soft-primary: rgba(230,46,4,0.15);
+    }
+  </style>
+
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
@@ -35,9 +52,42 @@
     // Angular ID
     gtag('config', 'UA-118965717-4');
   </script>
+  <script>
+    var AIZ = AIZ || {};
+    AIZ.local = {
+        nothing_selected: 'Nothing selected',
+        nothing_found: 'Nothing Found',
+        choose_file: 'Choose file',
+        file_selected: 'File selected',
+        files_selected: 'Files selected',
+        add_more_files: 'Add more files',
+        adding_more_files: 'Adding more files',
+        drop_files_here_paste_or: 'Drop files here, paste or',
+        browse: 'Browse',
+        upload_complete: 'Upload complete',
+        upload_paused: 'Upload paused',
+        resume_upload: 'Resume upload',
+        pause_upload: 'Pause upload',
+        retry_upload: 'Retry upload',
+        cancel_upload: 'Cancel upload',
+        uploading: 'Uploading',
+        processing: 'Processing',
+        complete: 'Complete',
+        file: 'File',
+        files: 'Files',
+    }
+</script>
+
 </head>
 <body class="app">
   <!-- App Loading... -->
-
+  <!-- SCRIPTS -->
+  <script src="./assets/shop/js/vendors.js"></script>
+  <script src="./assets/shop/js/aiz-core.js"></script>
+  <script>
+    function addToWishList(id){
+      AIZ.plugins.notify('warning', "Please login first");
+    }
+  </script>
 </body>
 </html>

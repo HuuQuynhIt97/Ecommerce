@@ -75,63 +75,63 @@ export class DefaultLayoutComponent implements OnInit, AfterViewInit {
     public translate: TranslateService
 
   ) {
-    this.vi = require('../../../assets/ej2-lang/vi.json');
-    this.en = require('../../../assets/ej2-lang/en.json');
-    this.role = JSON.parse(localStorage.getItem('level'));
-    this.value = localStorage.getItem('lang');
-    const user = JSON.parse(localStorage.getItem("user")).user;
-    this.userName = user.username;
-    this.userID = user.id;
+    // this.vi = require('../../../assets/ej2-lang/vi.json');
+    // this.en = require('../../../assets/ej2-lang/en.json');
+    // this.role = JSON.parse(localStorage.getItem('level'));
+    // this.value = localStorage.getItem('lang');
+    // const user = JSON.parse(localStorage.getItem("user")).user;
+    // this.userName = user.username;
+    // this.userID = user.id;
   }
   toggleMinimize(e) {
     this.sidebarMinimized = e;
   }
   ngOnInit(): void {
-    if (signalr.CONNECTION_HUB.state === HubConnectionState.Connected) {
-      signalr.CONNECTION_HUB
-        .invoke('CheckOnline', this.userID, this.userName)
-        .catch(error => {
-          console.log(`CheckOnline error: ${error}`);
-        }
-        );
-      signalr.CONNECTION_HUB.on('Online', (users) => {
-        this.online = users;
-      });
+    // if (signalr.CONNECTION_HUB.state === HubConnectionState.Connected) {
+    //   signalr.CONNECTION_HUB
+    //     .invoke('CheckOnline', this.userID, this.userName)
+    //     .catch(error => {
+    //       console.log(`CheckOnline error: ${error}`);
+    //     }
+    //     );
+    //   signalr.CONNECTION_HUB.on('Online', (users) => {
+    //     this.online = users;
+    //   });
 
-      signalr.CONNECTION_HUB.on('UserOnline', (userNames: any) => {
-        const userNameList = JSON.stringify(userNames);
-        localStorage.setItem('userOnline', userNameList);
-      });
-    }
-    this.versionService.getAllVersion().subscribe((item: any) => {
-      this.data = item;
-      this.firstItem = item[0] || {};
-    });
+    //   signalr.CONNECTION_HUB.on('UserOnline', (userNames: any) => {
+    //     const userNameList = JSON.stringify(userNames);
+    //     localStorage.setItem('userOnline', userNameList);
+    //   });
+    // }
+    // this.versionService.getAllVersion().subscribe((item: any) => {
+    //   this.data = item;
+    //   this.firstItem = item[0] || {};
+    // });
 
-    this.langsData = [{ id: 'vi', name: 'VI' }, { id: 'en', name: 'EN' }];
-    this.navAdmin = new Nav().getNavAdmin();
-    this.navClient = new Nav().getNavClient();
-    this.navEc = new Nav().getNavEc();
+    // this.langsData = [{ id: 'vi', name: 'VI' }, { id: 'en', name: 'EN' }];
+    // this.navAdmin = new Nav().getNavAdmin();
+    // this.navClient = new Nav().getNavClient();
+    // this.navEc = new Nav().getNavEc();
 
-    this.getAvatar();
-    this.currentUser = JSON.parse(localStorage.getItem('user')).user.username;
-    this.page = 1;
-    this.pageSize = 10;
+    // this.getAvatar();
+    // this.currentUser = JSON.parse(localStorage.getItem('user')).user.username;
+    // this.page = 1;
+    // this.pageSize = 10;
 
-    this.userid = JSON.parse(localStorage.getItem('user')).user.id;
-    this.getMenu();
-    this.onService();
-    this.currentTime = moment().format('hh:mm:ss A');
-    setInterval(() => this.updateCurrentTime(), 1 * 1000);
+    // this.userid = JSON.parse(localStorage.getItem('user')).user.id;
+    // this.getMenu();
+    // this.onService();
+    // this.currentTime = moment().format('hh:mm:ss A');
+    // setInterval(() => this.updateCurrentTime(), 1 * 1000);
   }
   ngAfterViewInit() {
-    this.getBuilding();
-    const img = localStorage.getItem('avatar');
-    if (img === 'null') {
-      this.avatar = this.defaultImage();
-    } else {
-      this.avatar = this.sanitizer.bypassSecurityTrustResourceUrl('data:image/png;base64, ' + img);
-    }
+    // this.getBuilding();
+    // const img = localStorage.getItem('avatar');
+    // if (img === 'null') {
+    //   this.avatar = this.defaultImage();
+    // } else {
+    //   this.avatar = this.sanitizer.bypassSecurityTrustResourceUrl('data:image/png;base64, ' + img);
+    // }
   }
 
   getMenu() {
@@ -184,11 +184,11 @@ export class DefaultLayoutComponent implements OnInit, AfterViewInit {
   }
   onService() {
     this.headerService.currentImage
-      .subscribe(arg => {
-        if (arg) {
-          this.changeAvatar(arg);
-        }
-      });
+    .subscribe(arg => {
+      if (arg) {
+        this.changeAvatar(arg);
+      }
+    });
   }
   changeAvatar(avt) {
     let avatar;

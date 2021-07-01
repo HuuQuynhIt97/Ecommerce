@@ -15,6 +15,7 @@ using System.ComponentModel.DataAnnotations;
 using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Authentication;
 using ecommerce_api.Helpers;
+using ecommerce_api._Services.Interface;
 
 namespace ecommerce_api.Controllers
 {
@@ -25,6 +26,7 @@ namespace ecommerce_api.Controllers
         private readonly ILogger<AuthController> _logger;
         private readonly IJwtAuthManager _jwtAuthManager;
         private readonly IAuthRepository _repo;
+        private readonly IUserService _userService;
         private readonly IConfiguration _config;
         private readonly IMapper _mapper;
         public AuthController(ILogger<AuthController> logger, IJwtAuthManager jwtAuthManager, IAuthRepository repo, IConfiguration config, IMapper mapper)
@@ -36,40 +38,58 @@ namespace ecommerce_api.Controllers
             _repo = repo;
         }
 
+        [AllowAnonymous]
         [HttpPost("login")]
-        public async Task<IActionResult> Login(UserForLoginDto userForLoginDto)
+        public async Task<ActionResult> Login([FromBody] LoginRequest request)
         {
-            var userFromRepo = await _repo.Login(userForLoginDto.Username, userForLoginDto.Password);
-            if (userFromRepo == null)
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+
+            if (!_userService.IsValidUserCredentials(request.UserName, request.Password))
+            {
                 return Unauthorized();
+            }
+            var user = await _userService.GetUser(request.UserName, request.Password);
             var claims = new[]
             {
-                new Claim(ClaimTypes.NameIdentifier, userFromRepo.ID.ToString()),
-                new Claim(ClaimTypes.Name, userFromRepo.Username)
+               new Claim(ClaimTypes.NameIdentifier, user.ID.ToString()),
+                new Claim(ClaimTypes.Name, user.EmployeeID),
+                new Claim(ClaimTypeEnum.OCID.ToString(), user.OCID.ToString(),ClaimTypeEnum.OCID.ToString()),
+                new Claim(ClaimTypeEnum.Role.ToString(), user.RoleID.ToString(),ClaimTypeEnum.Role.ToString())
             };
 
-            var key = new SymmetricSecurityKey(Encoding.UTF8
-                .GetBytes(_config.GetSection("AppSettings:Token").Value));
+            var jwtResult =  _jwtAuthManager.GenerateTokens(request.UserName, claims, DateTime.Now);
 
-            var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha512Signature);
-
-            var tokenDescriptor = new SecurityTokenDescriptor
+           await  _jwtAuthManager.AddRefreshToken(jwtResult.RefreshToken);
+            // Xóa những token đã hết hạn khỏi db
+           await _jwtAuthManager.RemoveExpiredRefreshTokens(DateTime.Now);
+            _logger.LogInformation($"User [{request.UserName}] logged in the system.");
+            var userprofile = new UserProfileDto()
             {
-                Subject = new ClaimsIdentity(claims),
-                Expires = DateTime.Now.AddDays(1),
-                SigningCredentials = creds
+                User = new UserForReturnLogin
+                {
+                    Username = user.Username,
+                    Role = user.RoleID,
+                    ID = user.ID,
+                    OCLevel = user.LevelOC,
+                    IsLeader = user.isLeader,
+                    image = user.ImageBase64,
+                    Systems = user.UserSystems.Where(x => x.Status == true).Select(x => x.SystemID).ToList()
+                }
             };
-
-            var tokenHandler = new JwtSecurityTokenHandler();
-
-            var token = tokenHandler.CreateToken(tokenDescriptor);
-
-            var user = _mapper.Map<UserForDetailDto>(userFromRepo);
-
             return Ok(new
             {
-                token = tokenHandler.WriteToken(token),
-                user
+                loginResult = new LoginResult
+                {
+                    UserName = request.UserName,
+                    Role = user.Role.Name,
+                    ID = user.ID,
+                    AccessToken = jwtResult.AccessToken,
+                    RefreshToken = jwtResult.RefreshToken.TokenString
+                },
+                user = userprofile
             });
         }
 
