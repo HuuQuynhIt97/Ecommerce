@@ -16,7 +16,7 @@
   <meta name="author" content="Łukasz Holeczek">
   <meta name="keyword" content="Bootstrap,Admin,Template,Free,Angular,Dashboard,Typescript">
 	<!-- <link rel="shortcut icon" href="assets/favicon.ico"> -->
-	<title>Shopoo</title>
+	<title>Design</title>
   <!-- <link rel="stylesheet" href="./assets/css/w3.css">
   <link rel="stylesheet" href="./assets/css/pretty-checkbox.min.css">
 
@@ -55,28 +55,28 @@
   <script>
     var AIZ = AIZ || {};
     AIZ.local = {
-        nothing_selected: 'Nothing selected',
-        nothing_found: 'Nothing Found',
-        choose_file: 'Choose file',
-        file_selected: 'File selected',
-        files_selected: 'Files selected',
-        add_more_files: 'Add more files',
-        adding_more_files: 'Adding more files',
-        drop_files_here_paste_or: 'Drop files here, paste or',
-        browse: 'Browse',
-        upload_complete: 'Upload complete',
-        upload_paused: 'Upload paused',
-        resume_upload: 'Resume upload',
-        pause_upload: 'Pause upload',
-        retry_upload: 'Retry upload',
-        cancel_upload: 'Cancel upload',
-        uploading: 'Uploading',
-        processing: 'Processing',
-        complete: 'Complete',
-        file: 'File',
-        files: 'Files',
-    }
-</script>
+      nothing_selected: 'Nothing selected',
+      nothing_found: 'Nothing Found',
+      choose_file: 'Choose file',
+      file_selected: 'File selected',
+      files_selected: 'Files selected',
+      add_more_files: 'Add more files',
+      adding_more_files: 'Adding more files',
+      drop_files_here_paste_or: 'Drop files here, paste or',
+      browse: 'Browse',
+      upload_complete: 'Upload complete',
+      upload_paused: 'Upload paused',
+      resume_upload: 'Resume upload',
+      pause_upload: 'Pause upload',
+      retry_upload: 'Retry upload',
+      cancel_upload: 'Cancel upload',
+      uploading: 'Uploading',
+      processing: 'Processing',
+      complete: 'Complete',
+      file: 'File',
+      files: 'Files',
+      }
+  </script>
 
 </head>
 <body class="app">
@@ -89,5 +89,26 @@
       AIZ.plugins.notify('warning', "Please login first");
     }
   </script>
+   <!-- <script>
+    $(document).ready(function(){
+      $.post('home/section/featured.html', {_token:'GysxBqQKXzSQNk1WWDCcSBN189sfPoZ1x1qu2sSw'}, function(data){
+        $('#section_featured').html(data);
+        AIZ.plugins.slickCarousel();
+      });
+      $.post('home/section/best_selling.html', {_token:'GysxBqQKXzSQNk1WWDCcSBN189sfPoZ1x1qu2sSw'}, function(data){
+        $('#section_best_selling').html(data);
+        AIZ.plugins.slickCarousel();
+      });
+      $.post('home/section/home_categories.html', {_token:'GysxBqQKXzSQNk1WWDCcSBN189sfPoZ1x1qu2sSw'}, function(data){
+        $('#section_home_categories').html(data);
+        AIZ.plugins.slickCarousel();
+      });
+  
+      $.post('home/section/best_sellers.html', {_token:'GysxBqQKXzSQNk1WWDCcSBN189sfPoZ1x1qu2sSw'}, function(data){
+        $('#section_best_sellers').html(data);
+        AIZ.plugins.slickCarousel();
+      });
+    });
+  </script> -->
 </body>
 </html>

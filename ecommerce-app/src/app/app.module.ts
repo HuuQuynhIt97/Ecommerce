@@ -23,7 +23,7 @@ import { P404Component } from './views/error/404.component';
 import { P500Component } from './views/error/500.component';
 import { LoginComponent } from './views/login/login.component';
 import { RegisterComponent } from './views/register/register.component';
-
+import { SlickCarouselModule } from 'ngx-slick-carousel';
 const APP_CONTAINERS = [
   DefaultLayoutComponent
 ];
@@ -75,13 +75,13 @@ import { UserResolver } from './_core/_resolvers/user.resolvers';
 import { AlertifyService } from './_core/_service/alertify.service';
 import { AuthService } from './_core/_service/auth.service';
 
-
 export function tokenGetter() {
   return localStorage.getItem('token');
 }
 
 @NgModule({
   imports: [
+    SlickCarouselModule,
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,

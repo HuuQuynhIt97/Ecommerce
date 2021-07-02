@@ -57,6 +57,13 @@ export class DefaultLayoutComponent implements OnInit, AfterViewInit {
   userName: any;
   data: [] = [];
   firstItem: any;
+  slides = [
+    {img: "http://placehold.it/350x150/000000"},
+    {img: "http://placehold.it/350x150/111111"},
+    {img: "http://placehold.it/350x150/333333"},
+    {img: "http://placehold.it/350x150/666666"}
+  ];
+  slideConfig = {"slidesToShow": 4, "slidesToScroll": 4};
   constructor(
     private versionService: VersionService,
     private authService: AuthService,
@@ -86,44 +93,11 @@ export class DefaultLayoutComponent implements OnInit, AfterViewInit {
   toggleMinimize(e) {
     this.sidebarMinimized = e;
   }
+  
   ngOnInit(): void {
-    // if (signalr.CONNECTION_HUB.state === HubConnectionState.Connected) {
-    //   signalr.CONNECTION_HUB
-    //     .invoke('CheckOnline', this.userID, this.userName)
-    //     .catch(error => {
-    //       console.log(`CheckOnline error: ${error}`);
-    //     }
-    //     );
-    //   signalr.CONNECTION_HUB.on('Online', (users) => {
-    //     this.online = users;
-    //   });
-
-    //   signalr.CONNECTION_HUB.on('UserOnline', (userNames: any) => {
-    //     const userNameList = JSON.stringify(userNames);
-    //     localStorage.setItem('userOnline', userNameList);
-    //   });
-    // }
-    // this.versionService.getAllVersion().subscribe((item: any) => {
-    //   this.data = item;
-    //   this.firstItem = item[0] || {};
-    // });
-
-    // this.langsData = [{ id: 'vi', name: 'VI' }, { id: 'en', name: 'EN' }];
-    // this.navAdmin = new Nav().getNavAdmin();
-    // this.navClient = new Nav().getNavClient();
-    // this.navEc = new Nav().getNavEc();
-
-    // this.getAvatar();
-    // this.currentUser = JSON.parse(localStorage.getItem('user')).user.username;
-    // this.page = 1;
-    // this.pageSize = 10;
-
-    // this.userid = JSON.parse(localStorage.getItem('user')).user.id;
-    // this.getMenu();
-    // this.onService();
-    // this.currentTime = moment().format('hh:mm:ss A');
-    // setInterval(() => this.updateCurrentTime(), 1 * 1000);
+    
   }
+
   ngAfterViewInit() {
     // this.getBuilding();
     // const img = localStorage.getItem('avatar');
@@ -133,7 +107,29 @@ export class DefaultLayoutComponent implements OnInit, AfterViewInit {
     //   this.avatar = this.sanitizer.bypassSecurityTrustResourceUrl('data:image/png;base64, ' + img);
     // }
   }
-
+  addSlide() {
+    this.slides.push({img: "http://placehold.it/350x150/777777"})
+  }
+  
+  removeSlide() {
+    this.slides.length = this.slides.length - 1;
+  }
+  
+  slickInit(e) {
+    console.log('slick initialized');
+  }
+  
+  breakpoint(e) {
+    console.log('breakpoint');
+  }
+  
+  afterChange(e) {
+    console.log('afterChange');
+  }
+  
+  beforeChange(e) {
+    console.log('beforeChange');
+  }
   getMenu() {
     const navs = JSON.parse(localStorage.getItem('navs'));
     if (navs === null) {
@@ -154,9 +150,11 @@ export class DefaultLayoutComponent implements OnInit, AfterViewInit {
       this.navItems = navs;
     }
   }
+
   home() {
     return '/ec/execution/todolist-2';
   }
+
   onChange(args) {
     this.spinner.show();
     const lang = args.itemData.id;
@@ -173,6 +171,7 @@ export class DefaultLayoutComponent implements OnInit, AfterViewInit {
       this.spinner.hide();
     });
   }
+
   getBuilding() {
     const userID = JSON.parse(localStorage.getItem('user')).user.id;
     this.roleService.getRoleByUserID(userID).subscribe((res: any) => {
@@ -182,6 +181,7 @@ export class DefaultLayoutComponent implements OnInit, AfterViewInit {
       }
     });
   }
+
   onService() {
     this.headerService.currentImage
     .subscribe(arg => {
@@ -190,6 +190,7 @@ export class DefaultLayoutComponent implements OnInit, AfterViewInit {
       }
     });
   }
+
   changeAvatar(avt) {
     let avatar;
     if (avt) {
