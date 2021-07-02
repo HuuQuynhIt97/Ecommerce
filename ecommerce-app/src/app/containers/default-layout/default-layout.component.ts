@@ -58,12 +58,12 @@ export class DefaultLayoutComponent implements OnInit, AfterViewInit {
   data: [] = [];
   firstItem: any;
   slides = [
-    {img: "http://placehold.it/350x150/000000"},
-    {img: "http://placehold.it/350x150/111111"},
-    {img: "http://placehold.it/350x150/333333"},
-    {img: "http://placehold.it/350x150/666666"}
+    {img: "https://demo.activeitzone.com/ecommerce/public/uploads/all/qQR6fBE9MAjTWuIzGkZeI2wTDYAlIeBKQaezchPM.jpg"},
+    {img: "https://demo.activeitzone.com/ecommerce/public/uploads/all/jJjPcgUsldYlpgdxpKBKmR6gIwtXIcuYtxeloijR.jpg"},
+    {img: "https://demo.activeitzone.com/ecommerce/public/uploads/all/yclPDRGHySYidlrU06gics221CHFuYmZA2QvjIC2.jpg"},
+    {img: "https://demo.activeitzone.com/ecommerce/public/uploads/all/TGCHVRY64CxOCh1C33Pn7mdYfYM7OW6X8JdOaN7d.jpg"}
   ];
-  slideConfig = {"slidesToShow": 4, "slidesToScroll": 4};
+  slideConfig = {"slidesToShow": 1, "slidesToScroll": 1, "autoplay": true, "autoplaySpeed": 2000};
   constructor(
     private versionService: VersionService,
     private authService: AuthService,

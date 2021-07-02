@@ -25,7 +25,9 @@
               "src/web.config"
             ],
             "styles": [
-              "src/scss/style.scss"
+              "./node_modules/slick-carousel/slick/slick.scss",
+              "./node_modules/slick-carousel/slick/slick-theme.scss",
+              "src/styles.css"
             ],
             "stylePreprocessorOptions": {
               "includePaths": [
@@ -33,12 +35,12 @@
               ]
             },
             "scripts": [
-              "node_modules/jquery/dist/jquery.min.js",
-              "node_modules/popper.js/dist/umd/popper.min.js",
-              "node_modules/bootstrap/dist/js/bootstrap.min.js",
-              "node_modules/alertifyjs/build/alertify.min.js",
-              "node_modules/sweetalert2/dist/sweetalert2.js",
-              "node_modules/slick-carousel/slick/slick.min.js"
+              "./node_modules/jquery/dist/jquery.min.js",
+              // "node_modules/popper.js/dist/umd/popper.min.js",
+              // "node_modules/bootstrap/dist/js/bootstrap.min.js",
+              // "node_modules/alertifyjs/build/alertify.min.js",
+              // "node_modules/sweetalert2/dist/sweetalert2.js",
+              "./node_modules/slick-carousel/slick/slick.min.js"
             ],
             "allowedCommonJsDependencies": [
               "chart.js",
@@ -94,15 +96,14 @@
             "karmaConfig": "./karma.conf.js",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "src/tsconfig.spec.json",
-            "scripts": [],
+            "scripts": [
+              "./node_modules/jquery/dist/jquery.min.js",
+              "./node_modules/slick-carousel/slick/slick.min.js"
+            ],
             "styles": [
-              "node_modules/@coreui/icons/css/free.css",
-              "node_modules/flag-icon-css/css/flag-icon.css",
-              "node_modules/font-awesome/css/font-awesome.css",
-              "node_modules/simple-line-icons/dist/styles/simple-line-icons.css",
-              "node_modules/slick-carousel/slick/slick.scss",
-              "node_modules/slick-carousel/slick/slick-theme.scss",
-              "src/scss/style.scss"
+              "./node_modules/slick-carousel/slick/slick.scss",
+              "./node_modules/slick-carousel/slick/slick-theme.scss",
+              "src/styles.css"
             ],
             "stylePreprocessorOptions": {
               "includePaths": [
@@ -159,7 +160,7 @@
   "schematics": {
     "@schematics/angular:component": {
       "prefix": "app",
-      "style": "scss",
+      "style": "css",
       "skipTests": true
     },
     "@schematics/angular:directive": {
