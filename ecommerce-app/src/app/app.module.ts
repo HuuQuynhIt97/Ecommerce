@@ -74,13 +74,29 @@ import { TodolistResolver } from './_core/_resolvers/todolist.resolvers';
 import { UserResolver } from './_core/_resolvers/user.resolvers';
 import { AlertifyService } from './_core/_service/alertify.service';
 import { AuthService } from './_core/_service/auth.service';
-
+import {IvyCarouselModule} from 'angular-responsive-carousel';
+import { TopNavbarComponent } from './containers/default-layout/top-navbar/top-navbar.component';
+import { HeaderUserComponent } from './containers/default-layout/header-user/header-user.component';
+import { HomeBannerComponent } from './containers/default-layout/home-banner/home-banner.component';
+import { FooterUserComponent } from './containers/default-layout/footer-user/footer-user.component';
+import { PolicyUserComponent } from './containers/default-layout/policy-user/policy-user.component';
+import { BestSellersComponent } from './containers/default-layout/best-sellers/best-sellers.component';
+import { AdsOneComponent } from './containers/default-layout/ads-one/ads-one.component';
+import { AdsTwoComponent } from './containers/default-layout/ads-two/ads-two.component';
+import { AdsThreeComponent } from './containers/default-layout/ads-three/ads-three.component';
+import { SectionFeaturedComponent } from './containers/default-layout/section-featured/section-featured.component';
+import { BestSellingComponent } from './containers/default-layout/best-selling/best-selling.component';
+import { ClassifiedAdsComponent } from './containers/default-layout/classified-ads/classified-ads.component';
+import { HomeCategoriesComponent } from './containers/default-layout/home-categories/home-categories.component';
+import { TopCategoriesComponent } from './containers/default-layout/top-categories/top-categories.component';
+import { FlashSaleComponent } from './containers/default-layout/flash-sale/flash-sale.component';
 export function tokenGetter() {
   return localStorage.getItem('token');
 }
 
 @NgModule({
   imports: [
+    IvyCarouselModule,
     SlickCarouselModule,
     BrowserModule,
     BrowserAnimationsModule,
@@ -137,7 +153,22 @@ export function tokenGetter() {
     P500Component,
     LoginComponent,
     LayoutComponent,
-    RegisterComponent
+    RegisterComponent,
+    TopNavbarComponent,
+    HeaderUserComponent,
+    HomeBannerComponent,
+    FooterUserComponent,
+    PolicyUserComponent,
+    BestSellersComponent,
+    AdsOneComponent,
+    AdsTwoComponent,
+    AdsThreeComponent,
+    SectionFeaturedComponent,
+    BestSellingComponent,
+    ClassifiedAdsComponent,
+    HomeCategoriesComponent,
+    TopCategoriesComponent,
+    FlashSaleComponent,
   ],
   providers: [
     AuthGuard,

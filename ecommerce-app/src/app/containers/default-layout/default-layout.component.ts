@@ -93,9 +93,9 @@ export class DefaultLayoutComponent implements OnInit, AfterViewInit {
   toggleMinimize(e) {
     this.sidebarMinimized = e;
   }
-  
+
   ngOnInit(): void {
-    
+
   }
 
   ngAfterViewInit() {
@@ -110,31 +110,31 @@ export class DefaultLayoutComponent implements OnInit, AfterViewInit {
   addSlide() {
     this.slides.push({img: "http://placehold.it/350x150/777777"})
   }
-  
+
   removeSlide() {
     this.slides.length = this.slides.length - 1;
   }
-  
+
   slickInit(e) {
-    console.log('slick initialized');
+    //console.log('slick initialized');
   }
-  
+
   breakpoint(e) {
-    console.log('breakpoint');
+    //console.log('breakpoint');
   }
-  
+
   afterChange(e) {
-    console.log('afterChange');
+    //console.log('afterChange');
   }
-  
+
   beforeChange(e) {
-    console.log('beforeChange');
+    // console.log('beforeChange');
   }
   getMenu() {
     const navs = JSON.parse(localStorage.getItem('navs'));
     if (navs === null) {
       this.spinner.show();
-      console.log('Header ------- Begin getMenuByUserPermission');
+      //console.log('Header ------- Begin getMenuByUserPermission');
       const langID = localStorage.getItem('lang');
       this.permissionService.getMenuByLangID(this.userid, langID).subscribe((navsData: []) => {
         this.navItems = navsData;
@@ -144,9 +144,9 @@ export class DefaultLayoutComponent implements OnInit, AfterViewInit {
       }, (err) => {
         this.spinner.hide();
       });
-      console.log('Header ------- end getMenuByUserPermission');
+      //console.log('Header ------- end getMenuByUserPermission');
     } else {
-      console.log('Header ------- Begin getlocalstore menu');
+      //console.log('Header ------- Begin getlocalstore menu');
       this.navItems = navs;
     }
   }
@@ -207,6 +207,7 @@ export class DefaultLayoutComponent implements OnInit, AfterViewInit {
   updateCurrentTime() {
     this.currentTime = moment().format('hh:mm:ss A');
   }
+
   logout() {
     this.cookieService.deleteAll();
     localStorage.clear();
@@ -229,6 +230,7 @@ export class DefaultLayoutComponent implements OnInit, AfterViewInit {
       qPglhzROL+Xye4tmT4WvRcQ2/m81p+/rdguOi8Hc5L/8Qk4vhZzy08DduGt9eVQyP
       2qoTM1zi0/uf4hvBWf5c77e69Gf798y08L7j0RERERERERERH9P99ZpSVRivB/rgAAAABJRU5ErkJggg==`);
   }
+
   getAvatar() {
     const img = localStorage.getItem('avatar');
     if (img === 'null') {
