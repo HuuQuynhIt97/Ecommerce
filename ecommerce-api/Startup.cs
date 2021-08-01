@@ -12,6 +12,10 @@ using Microsoft.AspNetCore.CookiePolicy;
 using ecommerce_api.Helpers.Extensions;
 using ecommerce_api.SchedulerHelper;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
+using ecommerce_api._Repositories.Repositories;
+using ecommerce_api._Repositories.Interface;
+using ecommerce_api._Services.Services;
+using ecommerce_api._Services.Interface;
 
 namespace ecommerce_api
 {
@@ -71,6 +75,81 @@ namespace ecommerce_api
             {
                 configuration.RootPath = @"wwwroot/ClientApp";
             });
+
+            // Repositories
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IAddonRepository, AddonRepository>();
+            services.AddScoped<IAddressRepository, AddressRepository>();
+            services.AddScoped<IAppSettingRepository, AppSettingRepository>();
+            services.AddScoped<IAttributeRepository, AttributeRepository>();
+            services.AddScoped<IAttributeTranslationRepository, AttributeTranslationRepository>();
+            services.AddScoped<IBannerRepository, BannerRepository>();
+            services.AddScoped<IBlogCategoryRepository, BlogCategoryRepository>();
+            services.AddScoped<IBlogRepository, BlogRepository>();
+            services.AddScoped<IBrandRepository, BrandRepository>();
+            services.AddScoped<IBrandTranslationRepository, BrandTranslationRepository>();
+            services.AddScoped<IBusinessSettingRepository, BusinessSettingRepository>();
+            services.AddScoped<ICartRepository, CartRepository>();
+            services.AddScoped<ICategoryRepository, CategoryRepository>();
+            services.AddScoped<ICategoryTranslationRepository, CategoryTranslationRepository>();
+            services.AddScoped<ICityRepository, CityRepository>();
+            services.AddScoped<ICityTranslationRepository, CityTranslationRepository>();
+            services.AddScoped<IColorRepository, ColorRepository>();
+            services.AddScoped<ICommissionHistorieRepository, CommissionHistorieRepository>();
+            services.AddScoped<IConversationRepository, ConversationRepository>();
+            services.AddScoped<ICountrieRepository, CountrieRepository>();
+            services.AddScoped<ICouponRepository, CouponRepository>();
+            services.AddScoped<ICouponUsageRepository, CouponUsageRepository>();
+            services.AddScoped<ICurrencieRepository, CurrencieRepository>();
+            services.AddScoped<ICustomerPackagePaymentRepository, CustomerPackagePaymentRepository>();
+            services.AddScoped<ICustomerPackageRepository, CustomerPackageRepository>();
+            services.AddScoped<ICustomerPackageTranslationRepository, CustomerPackageTranslationRepository>();
+            services.AddScoped<ICustomerProductRepository, CustomerProductRepository>();
+            services.AddScoped<ICustomerProductTranslationRepository, CustomerProductTranslationRepository>();
+            services.AddScoped<ICustomerRepository, CustomerRepository>();
+            services.AddScoped<IFlashDealProductRepository, FlashDealProductRepository>();
+            services.AddScoped<IFlashDealRepository, FlashDealRepository>();
+            services.AddScoped<IFlashDealTranslationRepository, FlashDealTranslationRepository>();
+            services.AddScoped<IGeneralSettingRepository, GeneralSettingRepository>();
+            services.AddScoped<IHomeCategorieRepository, HomeCategorieRepository>();
+            services.AddScoped<ILanguageRepository, LanguageRepository>();
+            services.AddScoped<ILinkRepository, LinkRepository>();
+            services.AddScoped<IMessageRepository, MessageRepository>();
+            services.AddScoped<IOrderDetailRepository, OrderDetailRepository>();
+            services.AddScoped<IOrderRepository, OrderRepository>();
+            services.AddScoped<IPageRepository, PageRepository>();
+            services.AddScoped<IPageTranslationRepository, PageTranslationRepository>();
+            services.AddScoped<IPasswordResetRepository, PasswordResetRepository>();
+            services.AddScoped<IPaymentRepository, PaymentRepository>();
+            services.AddScoped<IPickupPointRepository, PickupPointRepository>();
+            services.AddScoped<IPickupPointTranslationRepository, PickupPointTranslationRepository>();
+            services.AddScoped<IPolicieRepository, PolicieRepository>();
+            services.AddScoped<IProductRepository, ProductRepository>();
+            services.AddScoped<IProductStockRepository, ProductStockRepository>();
+            services.AddScoped<IProductTaxeRepository, ProductTaxeRepository>();
+            services.AddScoped<IProductTranslationRepository, ProductTranslationRepository>();
+            services.AddScoped<IReviewRepository, ReviewRepository>();
+            services.AddScoped<IRoleRepository, RoleRepository>();
+            services.AddScoped<IRoleTranslationRepository, RoleTranslationRepository>();
+            services.AddScoped<ISearchRepository, SearchRepository>();
+            services.AddScoped<ISellerRepository, SellerRepository>();
+            services.AddScoped<ISellerWithdrawRequestRepository, SellerWithdrawRequestRepository>();
+            services.AddScoped<ISeoSettingRepository, SeoSettingRepository>();
+            services.AddScoped<IShopRepository, ShopRepository>();
+            services.AddScoped<ISliderRepository, SliderRepository>();
+            services.AddScoped<IStaffRepository, StaffRepository>();
+            services.AddScoped<ISubscribeRepository, SubscribeRepository>();
+            services.AddScoped<ITaxRepository, TaxRepository>();
+            services.AddScoped<ITicketRepository, TicketRepository>();
+            services.AddScoped<ITranslationRepository, TranslationRepository>();
+            services.AddScoped<IUploadRepository, UploadRepository>();
+            services.AddScoped<IWalletRepository, WalletRepository>();
+            services.AddScoped<IWishlistRepository, WishlistRepository>();
+            services.AddScoped<IAuthRepository, AuthRepository>();
+
+            // Services
+            services.AddScoped<ICategoryService, CategoryService>();
+            services.AddScoped<IProductService, ProductService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

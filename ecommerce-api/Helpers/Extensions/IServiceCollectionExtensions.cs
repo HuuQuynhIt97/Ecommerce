@@ -54,7 +54,7 @@ namespace ecommerce_api.Helpers.Extensions
         public static IServiceCollection AddServicesExtention(this IServiceCollection services)
         {
             
-            services.AddScoped<IUserService, UserService>();
+            // services.AddScoped<IUserService, UserService>();
             
             //extension
             services.AddScoped<IMailExtension, MailExtension>();
