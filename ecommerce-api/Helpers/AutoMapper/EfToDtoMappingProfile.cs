@@ -40,6 +40,12 @@ namespace ecommerce_api.Helpers.AutoMapper
            CreateMap<Coupon, CouponDto>();
            CreateMap<Currency, CountryDto>();
            CreateMap<Customer_package_payment, CustomerPackagePaymentDto>();
+           CreateMap<Customer_package, CustomerPackageDto>();
+           CreateMap<Customer_product, CustomerProductDto>();
+           CreateMap<Customer, CustomerDto>();
+           CreateMap<Flash_deal_product, FlashDealProductDto>();
+           CreateMap<Flash_deal, FlashDealDto>();
+           CreateMap<General_setting, GeneralSettingDto>();
         }
     }
 }
