@@ -27,19 +27,19 @@ namespace ecommerce_api.Controllers
             return Ok(userDetails);
         }
 
-        [HttpGet(Name = "GetUserDetails")]
-        public async Task<IActionResult> GetAll()
-        {
-            var userDetails = await _userService.GetAllAsync();
-            return Ok(userDetails);
-        }
-        [HttpGet("{id}",Name = "GetUserSingle")]
+        // [HttpGet(Name = "GetUserDetails")]
+        // public async Task<IActionResult> GetAll()
+        // {
+        //     var userDetails = await _userService.GetAllAsync();
+        //     return Ok(userDetails);
+        // }
+        // [HttpGet("{id}",Name = "GetUserSingle")]
         
-        public IActionResult Single(int id)
-        {
-            var userDetails =  _userService.GetById(id);
-            return Ok(userDetails);
-        }
+        // public IActionResult Single(int id)
+        // {
+        //     var userDetails =  _userService.GetById(id);
+        //     return Ok(userDetails);
+        // }
         [HttpGet("{text}")]
         public async Task<IActionResult> Search([FromQuery]PaginationParams param, string text)
         {
