@@ -44,6 +44,19 @@ namespace ecommerce_api.Helpers.AutoMapper
             CreateMap<FlashDealProductDto, Flash_deal_product>();
             CreateMap<FlashDealDto, Flash_deal>();
             CreateMap<GeneralSettingDto, General_setting>();
+            CreateMap<HomeCategoryDto, Home_category>();
+            CreateMap<LinkDto, Link>();
+            CreateMap<MessageDto, Messages>();
+            CreateMap<OrderDto, Order>();
+            CreateMap<OrderDetailDto, Order_detail>();
+            CreateMap<PageDto, Page>();
+            CreateMap<PaymentDto, Payment>();
+            CreateMap<PickupPointDto, Pickup_point>();
+            CreateMap<SellerWithdrawRequestDto, Seller_withdraw_request>();
+            CreateMap<SeoSettingDto, Seo_setting>();
+            CreateMap<SliderDto, Slider>();
+            CreateMap<StaffDto, Staff>();
+            CreateMap<TicketDto, Ticket>();
         }
     }
 }
