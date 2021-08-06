@@ -148,8 +148,54 @@ namespace ecommerce_api
             services.AddScoped<IAuthRepository, AuthRepository>();
 
             // Services
+            services.AddScoped<IAddressService, AddressService>();
+            services.AddScoped<IAttributeService, AttributeService>();
+            services.AddScoped<IBannerService, BannerService>();
+            services.AddScoped<IBlogCategoryService, BlogCategoryService>();
+            services.AddScoped<IBlogService, BlogService>();
+            services.AddScoped<IBrandService, BrandService>();
+            services.AddScoped<IBusinessSettingService, BusinessSettingService>();
             services.AddScoped<ICategoryService, CategoryService>();
+            services.AddScoped<ICityService, CityService>();
+            services.AddScoped<IColorService, ColorService>();
+            services.AddScoped<ICommissionHistoryService, CommissionHistoryService>();
+            services.AddScoped<IConversationService, ConversationService>();
+            services.AddScoped<ICountryService, CountryService>();
+            services.AddScoped<ICouponService, CouponService>();
+            services.AddScoped<ICouPonUsageService, CouPonUsageService>();
+            services.AddScoped<ICurrencyService, CurrencyService>();
+            services.AddScoped<ICustomerPackagePaymentService, CustomerPackagePaymentService>();
+            services.AddScoped<ICustomerPackageService, CustomerPackageService>();
+            services.AddScoped<ICustomerProductService, CustomerProductService>();
+            services.AddScoped<ICustomerService, CustomerService>();
+            services.AddScoped<IFlashDealProductService, FlashDealProductService>();
+            services.AddScoped<IFlashDealService, FlashDealService>();
+            services.AddScoped<IGeneralSettingService, GeneralSettingService>();
+            services.AddScoped<IHomeCategoryService, HomeCategoryService>();
+            services.AddScoped<ILinkService, LinkService>();
+            services.AddScoped<IMessageService, MessageService>();
+            services.AddScoped<IOrderDetailService, OrderDetailService>();
+            services.AddScoped<IOrderService, OrderService>();
+            services.AddScoped<IPageService, PageService>();
+            services.AddScoped<IPaymentService, PaymentService>();
+            services.AddScoped<IPickupPointService, PickupPointService>();
+            services.AddScoped<IPolicyService, PolicyService>();
             services.AddScoped<IProductService, ProductService>();
+            services.AddScoped<IProductStockService, ProductStockService>();
+            services.AddScoped<IProductTaxeService, ProductTaxeService>();
+            services.AddScoped<IReviewService, ReviewService>();
+            services.AddScoped<ISellerService, SellerService>();
+            services.AddScoped<ISellerWithdrawRequestService, SellerWithdrawRequestService>();
+            services.AddScoped<ISeoSettingService, SeoSettingService>();
+            services.AddScoped<IShopService, ShopService>();
+            services.AddScoped<ISliderService, SliderService>();
+            services.AddScoped<IStaffService, StaffService>();
+            services.AddScoped<ISubscribeService, SubscribeService>();
+            services.AddScoped<ITaxeService, TaxeService>();
+            services.AddScoped<ITicketReplyService, TicketReplyService>();
+            services.AddScoped<ITicketService, TicketService>();
+            services.AddScoped<IWalletService, WalletService>();
+            services.AddScoped<IWishlistService, WishlistService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -59,6 +59,8 @@ namespace ecommerce_api.Helpers.AutoMapper
            CreateMap<Slider, SliderDto>();
            CreateMap<Staff, StaffDto>();
            CreateMap<Ticket, TicketDto>();
+           CreateMap<Ticket_reply, TicketReplyDto>();
+           CreateMap<Wallet, WalletDto>();
         }
     }
 }
