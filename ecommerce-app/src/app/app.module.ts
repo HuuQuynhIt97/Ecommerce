@@ -1,11 +1,9 @@
-import { FooterComponent } from './views/layout/footer/footer.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { LocationStrategy, HashLocationStrategy, CommonModule, PathLocationStrategy } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
-import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 
 import { IconModule, IconSetModule, IconSetService } from '@coreui/icons-angular';
@@ -28,13 +26,13 @@ const APP_CONTAINERS = [
   DefaultLayoutComponent
 ];
 
-import {
-  AppAsideModule,
-  AppBreadcrumbModule,
-  AppHeaderModule,
-  AppFooterModule,
-  AppSidebarModule,
-} from '@coreui/angular';
+// import {
+//   AppAsideModule,
+//   AppBreadcrumbModule,
+//   AppHeaderModule,
+//   AppFooterModule,
+//   AppSidebarModule,
+// } from '@coreui/angular';
 
 // Import routing module
 import { AppRoutingModule } from './app.routing';
@@ -60,7 +58,6 @@ import { ImageCropperModule } from 'ngx-image-cropper';
 import { JwtModule } from '@auth0/angular-jwt';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { SafePipeModule } from 'safe-pipe';
-import { MentionModule } from 'angular-mentions';
 import { BasicAuthInterceptor } from './_core/_helper/basic-auth.interceptor';
 import { ErrorInterceptorProvider } from './_core/_service/error.interceptor';
 import { AuthGuard } from './_core/_guards/auth.guard';
@@ -111,7 +108,6 @@ export function tokenGetter() {
     GridAllModule,
     MomentModule,
     InfiniteScrollModule,
-    MentionModule,
     ImageCropperModule,
     UploaderModule,
     CoreModule,
@@ -127,18 +123,16 @@ export function tokenGetter() {
     JwtModule.forRoot({
       config: {
         tokenGetter,
-        allowedDomains: ['10.4.0.76:1009'],
-        disallowedRoutes: ['10.4.0.76:1009/api/auth']
       }
     }),
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    AppAsideModule,
-    AppBreadcrumbModule.forRoot(),
-    AppFooterModule,
-    AppHeaderModule,
-    AppSidebarModule,
+    // AppAsideModule,
+    // AppBreadcrumbModule.forRoot(),
+    // AppFooterModule,
+    // AppHeaderModule,
+    // AppSidebarModule,
     PerfectScrollbarModule,
     BsDropdownModule.forRoot(),
     TabsModule.forRoot(),

@@ -27,8 +27,6 @@
             "styles": [
               "./node_modules/slick-carousel/slick/slick.scss",
               "./node_modules/slick-carousel/slick/slick-theme.scss",
-              // "src/scss/vendors.css",
-              // "src/scss/aiz-core.css",
               "src/styles.css"
             ],
             "stylePreprocessorOptions": {
@@ -39,9 +37,7 @@
             "scripts": [
               "./node_modules/jquery/dist/jquery.min.js",
               "node_modules/sweetalert2/dist/sweetalert2.js",
-              "./node_modules/slick-carousel/slick/slick.min.js",
-              // "src/assets/js/aiz-core.js",
-              // "src/assets/js/vendors.js"
+              "./node_modules/slick-carousel/slick/slick.min.js"
             ],
             "allowedCommonJsDependencies": [
               "chart.js",

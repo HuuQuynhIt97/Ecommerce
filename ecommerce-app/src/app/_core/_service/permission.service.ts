@@ -4,7 +4,7 @@ import { Observable, BehaviorSubject } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { environment } from '../../../environments/environment';
 import { UtilitiesService } from './utilities.service';
-import { INavData } from '@coreui/angular';
+// import { INavData } from '@coreui/angular';
 @Injectable({
   providedIn: 'root'
 })
@@ -99,7 +99,7 @@ export class PermissionService {
     return this.http.get<[]>(this.baseUrl + 'Permission/GetMenuByUserPermission/' + userId, {})
     .pipe(map(response => {
       const menus = response as any[];
-      const navs: INavData[] = [
+      const navs: any[] = [
         {
           name: 'Home',
           url: '/',
@@ -169,7 +169,7 @@ export class PermissionService {
     return this.http.get<[]>(`${this.baseUrl}Permission/GetMenuByLangID?userID=${userID}&langID=${langID}` , {})
       .pipe(map(response => {
         const menus = response as any[];
-        const navs: INavData[] = [
+        const navs: any[] = [
           {
             name: 'Home',
             url: '/',

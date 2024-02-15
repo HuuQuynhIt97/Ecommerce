@@ -176,9 +176,9 @@ export class DefaultLayoutComponent implements OnInit, AfterViewInit {
     const userID = JSON.parse(localStorage.getItem('user')).user.id;
     this.roleService.getRoleByUserID(userID).subscribe((res: any) => {
       res = res || {};
-      if (res !== {}) {
-        this.level = res.id;
-      }
+      this.level = res.id;
+      // if (res !== {}) {
+      // }
     });
   }
 
